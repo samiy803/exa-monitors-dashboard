@@ -48,7 +48,7 @@ const MONITOR_DEFS: MonitorDef[] = [
   {
     name: "OpenClaw Updates",
     query:
-      "OpenClaw robot hand project updates, capabilities, builds, firmware",
+      "OpenClaw AI agent framework updates, releases, new features, ClawHub, plugins, skills",
     cron: "0 9 * * *",
     timezone: "America/New_York",
     numResults: 10,

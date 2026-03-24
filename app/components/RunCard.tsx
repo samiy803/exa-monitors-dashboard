@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { marked } from "marked";
-import { FeedItem } from "@/lib/types";
+import { FeedItem, SearchResult } from "@/lib/types";
 
 marked.setOptions({ breaks: true, gfm: true });
 
@@ -20,6 +20,38 @@ function timeAgo(dateStr: string): string {
   return `${days}d ago`;
 }
 
+/**
+ * Replace raw URLs in markdown content with titled links.
+ *
+ * Uses the search results to map URLs to titles. For URLs without a
+ * known title, falls back to the domain name. Skips URLs already
+ * inside markdown link syntax `[text](url)`.
+ */
+function linkifyRawUrls(content: string, results: SearchResult[]): string {
+  const titleByUrl = new Map<string, string>();
+  for (const r of results) {
+    if (r.url && r.title) {
+      titleByUrl.set(r.url, r.title);
+    }
+  }
+
+  return content.replace(
+    /(?<!\]\()https?:\/\/[^\s)>\]]+/g,
+    (rawUrl) => {
+      // Strip trailing punctuation that isn't part of the URL
+      const cleaned = rawUrl.replace(/[.,;:!?]+$/, "");
+      const title = titleByUrl.get(cleaned);
+      if (title) return `[${title}](${cleaned})`;
+      try {
+        const domain = new URL(cleaned).hostname.replace(/^www\./, "");
+        return `[${domain}](${cleaned})`;
+      } catch {
+        return rawUrl;
+      }
+    }
+  );
+}
+
 interface RunCardProps {
   item: FeedItem;
 }
@@ -29,10 +61,12 @@ export function RunCard({ item }: RunCardProps) {
   const sourceCount = item.results.length;
 
   const contentHtml = useMemo(() => {
-    // Ensure markdown headers start on their own line (LLM sometimes inlines them)
-    const normalized = item.content.replace(/([^\n])(\n?)(#{1,4} )/g, "$1\n\n$3");
-    return marked.parse(normalized) as string;
-  }, [item.content]);
+    // 1. Replace raw URLs with titled markdown links
+    let md = linkifyRawUrls(item.content, item.results);
+    // 2. Ensure markdown headers start on their own line
+    md = md.replace(/([^\n])(\n?)(#{1,4} )/g, "$1\n\n$3");
+    return marked.parse(md) as string;
+  }, [item.content, item.results]);
 
   return (
     <article className="py-5 border-b border-[color:var(--color-border)] last:border-b-0">
