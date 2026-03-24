@@ -8,25 +8,25 @@ import { MonitorConfig } from "./types";
  */
 export const MONITORS: MonitorConfig[] = [
   {
-    id: "01kmgy0pd4b12t68c2gy3yhj25",
+    id: "01kmgyj4s00ve4fy4m2bn6tqp0",
     name: "Chess Drama & News",
     category: "chess",
     color: "var(--color-chess)",
   },
   {
-    id: "01kmgy0pqv0n19nhj1cg3zz7n1",
+    id: "01kmgyj51g3kgzgfnn9p4zcasy",
     name: "OpenClaw Updates",
     category: "openclaw",
     color: "var(--color-openclaw)",
   },
   {
-    id: "01kmgy0pzhk3bgpn50cfhyv27g",
+    id: "01kmgyj57qdem6zfhy3aedbajb",
     name: "Practical ML / Transformers",
     category: "ml",
     color: "var(--color-ml)",
   },
   {
-    id: "01kmgy0q6avy1qqhc1y26vftqz",
+    id: "01kmgyj5nhdatna0v1t1vhsrc1",
     name: "Major AI Only",
     category: "ai",
     color: "var(--color-ai)",
