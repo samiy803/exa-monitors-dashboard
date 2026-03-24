@@ -3,9 +3,9 @@ import { revalidatePath } from "next/cache";
 import { verifyWebhookSignature } from "@/lib/webhook";
 
 export async function POST(request: NextRequest) {
-  const secret = process.env.WEBHOOK_SECRET;
-  if (!secret) {
-    console.error("WEBHOOK_SECRET not configured");
+  const secrets = process.env.WEBHOOK_SECRETS?.split(",").filter(Boolean);
+  if (!secrets?.length) {
+    console.error("WEBHOOK_SECRETS not configured");
     return NextResponse.json({ error: "Server misconfigured" }, { status: 500 });
   }
 
@@ -16,7 +16,9 @@ export async function POST(request: NextRequest) {
 
   const body = await request.text();
 
-  if (!verifyWebhookSignature(body, signature, secret)) {
+  // Each monitor has its own webhook secret — try all until one matches
+  const verified = secrets.some((s) => verifyWebhookSignature(body, signature, s));
+  if (!verified) {
     return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
   }
 
