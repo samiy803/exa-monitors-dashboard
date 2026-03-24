@@ -69,7 +69,7 @@ const MONITOR_DEFS: MonitorDef[] = [
 ];
 
 async function createMonitor(def: MonitorDef) {
-  const res = await fetch("https://api.exa.ai/search-monitors", {
+  const res = await fetch("https://api.exa.ai/monitors", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
