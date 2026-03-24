@@ -28,10 +28,11 @@ export function RunCard({ item }: RunCardProps) {
   const [expanded, setExpanded] = useState(false);
   const sourceCount = item.results.length;
 
-  const contentHtml = useMemo(
-    () => marked.parse(item.content) as string,
-    [item.content]
-  );
+  const contentHtml = useMemo(() => {
+    // Ensure markdown headers start on their own line (LLM sometimes inlines them)
+    const normalized = item.content.replace(/([^\n])(\n?)(#{1,4} )/g, "$1\n\n$3");
+    return marked.parse(normalized) as string;
+  }, [item.content]);
 
   return (
     <article className="py-5 border-b border-[color:var(--color-border)] last:border-b-0">
