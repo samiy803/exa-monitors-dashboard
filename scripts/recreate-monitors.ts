@@ -43,7 +43,7 @@ const MONITOR_DEFS: MonitorDef[] = [
     timezone: "America/New_York",
     numResults: 10,
     outputDescription:
-      "Write a markdown-formatted briefing. Use short ## headers (2-5 words max, never sentences). Put all detail in body text and bullet points below headers. Use **bold** for names/events and [links](url) where relevant.",
+      "Write a synthesized report (NOT a list of sources) about the latest chess news, drama, and tournament results. Use short ## headers (2-5 words). Under each header, write 2-3 sentences of prose summarizing what happened. Use **bold** for key names. Use bullet points only for lists of specific items. Never output raw source titles or URLs.",
   },
   {
     name: "OpenClaw Updates",
@@ -53,7 +53,7 @@ const MONITOR_DEFS: MonitorDef[] = [
     timezone: "America/New_York",
     numResults: 10,
     outputDescription:
-      "Write a markdown-formatted summary. Use short ## headers (2-5 words max, never sentences). Put all detail in body text and bullet points below headers. Use **bold** for key updates and [links](url) where relevant.",
+      "Write a synthesized report (NOT a list of sources) about the latest OpenClaw developments and community activity. Use short ## headers (2-5 words). Under each header, write 2-3 sentences of prose. Use **bold** for key updates. Use bullet points only for lists of specific items. Never output raw source titles or URLs.",
   },
   {
     name: "Practical ML / Transformers",
@@ -63,7 +63,7 @@ const MONITOR_DEFS: MonitorDef[] = [
     timezone: "America/New_York",
     numResults: 10,
     outputDescription:
-      "Write a markdown-formatted digest. Use short ## headers (2-5 words max, never sentences). Put all detail in body text and bullet points below headers. Use **bold** for paper names/methods and [links](url) where relevant.",
+      "Write a synthesized report (NOT a list of sources) about practical ML and transformer research breakthroughs. Use short ## headers (2-5 words). Under each header, write 2-3 sentences of prose. Use **bold** for paper names and methods. Use bullet points only for lists of specific items. Never output raw source titles or URLs.",
   },
   {
     name: "Major AI Only",
@@ -73,7 +73,7 @@ const MONITOR_DEFS: MonitorDef[] = [
     timezone: "America/New_York",
     numResults: 10,
     outputDescription:
-      "Write a markdown-formatted briefing of only the biggest AI news. Use short ## headers (2-5 words max, never sentences). Put all detail in body text and bullet points below headers. Use **bold** for companies/figures and [links](url) where relevant.",
+      "Write a synthesized report (NOT a list of sources) about only the biggest AI news — model releases, policy shifts, major funding. Use short ## headers (2-5 words). Under each header, write 2-3 sentences of prose. Use **bold** for companies and figures. Use bullet points only for lists of specific items. Never output raw source titles or URLs.",
   },
 ];
 
