@@ -43,7 +43,7 @@ const MONITOR_DEFS: MonitorDef[] = [
     timezone: "America/New_York",
     numResults: 10,
     outputDescription:
-      "Write a markdown-formatted briefing of the latest chess news, drama, and tournament results. Use ## headers for sections, **bold** for names and events, bullet points for key items, and [links](url) where relevant.",
+      "Write a markdown-formatted briefing. Use short ## headers (2-5 words max, never sentences). Put all detail in body text and bullet points below headers. Use **bold** for names/events and [links](url) where relevant.",
   },
   {
     name: "OpenClaw Updates",
@@ -53,7 +53,7 @@ const MONITOR_DEFS: MonitorDef[] = [
     timezone: "America/New_York",
     numResults: 10,
     outputDescription:
-      "Write a markdown-formatted summary of latest OpenClaw developments and community activity. Use ## headers for sections, **bold** for key updates, bullet points for changes, and [links](url) where relevant.",
+      "Write a markdown-formatted summary. Use short ## headers (2-5 words max, never sentences). Put all detail in body text and bullet points below headers. Use **bold** for key updates and [links](url) where relevant.",
   },
   {
     name: "Practical ML / Transformers",
@@ -63,7 +63,7 @@ const MONITOR_DEFS: MonitorDef[] = [
     timezone: "America/New_York",
     numResults: 10,
     outputDescription:
-      "Write a markdown-formatted digest of practical ML and transformer research breakthroughs. Use ## headers for sections, **bold** for paper names and methods, bullet points for findings, and [links](url) where relevant.",
+      "Write a markdown-formatted digest. Use short ## headers (2-5 words max, never sentences). Put all detail in body text and bullet points below headers. Use **bold** for paper names/methods and [links](url) where relevant.",
   },
   {
     name: "Major AI Only",
@@ -73,7 +73,7 @@ const MONITOR_DEFS: MonitorDef[] = [
     timezone: "America/New_York",
     numResults: 10,
     outputDescription:
-      "Write a markdown-formatted briefing of only the biggest AI news — model releases, policy shifts, major funding. Use ## headers for sections, **bold** for companies and figures, bullet points for key facts, and [links](url) where relevant.",
+      "Write a markdown-formatted briefing of only the biggest AI news. Use short ## headers (2-5 words max, never sentences). Put all detail in body text and bullet points below headers. Use **bold** for companies/figures and [links](url) where relevant.",
   },
 ];
 
