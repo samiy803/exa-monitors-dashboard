@@ -3,30 +3,30 @@ import { MonitorConfig } from "./types";
 /**
  * Static monitor configuration.
  *
- * The `id` field must be populated after running the create-monitors script.
+ * The `id` field must be populated after running the recreate-monitors script.
  * Until then, use empty strings — the page will show an empty state.
  */
 export const MONITORS: MonitorConfig[] = [
   {
-    id: "01kmgsx3j6x0qqj2z1zzt2vs0h",
+    id: "01kmgt56hnspt155zfhscmsx6p",
     name: "Chess Drama & News",
     category: "chess",
     color: "var(--color-chess)",
   },
   {
-    id: "01kmgsx3zghsszpjx6r7n9y40r",
+    id: "01kmgt56s7034q5mx7tew629yb",
     name: "OpenClaw Updates",
     category: "openclaw",
     color: "var(--color-openclaw)",
   },
   {
-    id: "01kmgsx44mh04ab33yx1aw3c6h",
+    id: "01kmgt571c0wes28ke4jaepekf",
     name: "Practical ML / Transformers",
     category: "ml",
     color: "var(--color-ml)",
   },
   {
-    id: "01kmgsx49ssgb0p4c4hfzyrn6n",
+    id: "01kmgt577p2zejae2k81fy1tya",
     name: "Major AI Only",
     category: "ai",
     color: "var(--color-ai)",

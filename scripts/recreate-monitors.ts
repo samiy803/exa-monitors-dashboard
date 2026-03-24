@@ -19,10 +19,10 @@ if (!API_KEY) {
 }
 
 const OLD_IDS = [
-  "01kmgsx3j6x0qqj2z1zzt2vs0h",
-  "01kmgsx3zghsszpjx6r7n9y40r",
-  "01kmgsx44mh04ab33yx1aw3c6h",
-  "01kmgsx49ssgb0p4c4hfzyrn6n",
+  "01kmgt56hnspt155zfhscmsx6p",
+  "01kmgt56s7034q5mx7tew629yb",
+  "01kmgt571c0wes28ke4jaepekf",
+  "01kmgt577p2zejae2k81fy1tya",
 ];
 
 interface MonitorDef {
