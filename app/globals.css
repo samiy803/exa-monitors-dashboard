@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root,
+  [data-theme="editorial"] {
+    --color-bg: #faf8f5;
+    --color-surface: #faf8f5;
+    --color-surface-hover: #f0ece6;
+    --color-border: #e0dcd6;
+    --color-text: #1a1a1a;
+    --color-text-secondary: #6b6560;
+    --color-text-muted: #9a9590;
+    --font-display: var(--font-playfair), Georgia, serif;
+    --font-body: var(--font-source-serif), Georgia, serif;
+    --font-code: var(--font-mono), 'Courier New', monospace;
+    --color-chess: #c0392b;
+    --color-openclaw: #27ae60;
+    --color-ml: #2980b9;
+    --color-ai: #8e44ad;
+    --color-accent: #1a1a1a;
+    --color-link: #2980b9;
+  }
+
+  [data-theme="terminal"] {
+    --color-bg: #0a0a0a;
+    --color-surface: #141414;
+    --color-surface-hover: #1e1e1e;
+    --color-border: #2a2a2a;
+    --color-text: #cccccc;
+    --color-text-secondary: #888888;
+    --color-text-muted: #555555;
+    --font-display: var(--font-mono), 'Courier New', monospace;
+    --font-body: var(--font-mono), 'Courier New', monospace;
+    --font-code: var(--font-mono), 'Courier New', monospace;
+    --color-chess: #ff6b6b;
+    --color-openclaw: #2ecc71;
+    --color-ml: #4ecdc4;
+    --color-ai: #ffe66d;
+    --color-accent: #00ff41;
+    --color-link: #4ecdc4;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    transition: background-color 0.2s, color 0.2s;
+  }
+}
