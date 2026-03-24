@@ -1,7 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { marked } from "marked";
 import { FeedItem } from "@/lib/types";
+
+marked.setOptions({ breaks: true, gfm: true });
 
 function timeAgo(dateStr: string): string {
   const seconds = Math.floor(
@@ -25,17 +28,17 @@ export function RunCard({ item }: RunCardProps) {
   const [expanded, setExpanded] = useState(false);
   const sourceCount = item.results.length;
 
+  const contentHtml = useMemo(
+    () => marked.parse(item.content) as string,
+    [item.content]
+  );
+
   return (
-    <article
-      className="py-5 border-b border-[color:var(--color-border)] last:border-b-0"
-    >
+    <article className="py-5 border-b border-[color:var(--color-border)] last:border-b-0">
       {/* Header: category badge + timestamp */}
       <div className="flex items-center gap-3 mb-2">
         <span
-          className="
-            text-xs font-semibold uppercase tracking-wider
-            font-[family-name:var(--font-code)]
-          "
+          className="text-xs font-semibold uppercase tracking-wider font-[family-name:var(--font-code)]"
           style={{ color: item.color }}
         >
           {item.category}
@@ -45,36 +48,31 @@ export function RunCard({ item }: RunCardProps) {
         </span>
       </div>
 
-      {/* Content: the text summary */}
+      {/* Content: rendered markdown */}
       <div
-        className="
-          text-[color:var(--color-text)]
-          font-[family-name:var(--font-body)]
-          leading-relaxed text-[15px]
-          whitespace-pre-line
-        "
-      >
-        {item.content}
-      </div>
+        className="prose text-[15px]"
+        dangerouslySetInnerHTML={{ __html: contentHtml }}
+      />
 
       {/* Sources: expandable */}
       {sourceCount > 0 && (
         <div className="mt-3">
           <button
             onClick={() => setExpanded(!expanded)}
-            className="
-              text-xs font-[family-name:var(--font-code)]
-              text-[color:var(--color-link)]
-              hover:underline
-            "
+            className="text-xs font-[family-name:var(--font-code)] text-[color:var(--color-link)] hover:underline"
           >
-            {expanded ? "hide sources" : `${sourceCount} source${sourceCount === 1 ? "" : "s"}`}
+            {expanded
+              ? "hide sources"
+              : `${sourceCount} source${sourceCount === 1 ? "" : "s"}`}
           </button>
 
           {expanded && (
             <ul className="mt-2 space-y-1">
               {item.results.map((result, i) => (
-                <li key={i} className="text-xs text-[color:var(--color-text-secondary)]">
+                <li
+                  key={i}
+                  className="text-xs text-[color:var(--color-text-secondary)]"
+                >
                   {result.url ? (
                     <a
                       href={result.url}
