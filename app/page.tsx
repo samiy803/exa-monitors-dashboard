@@ -24,16 +24,29 @@ export default function Home() {
   return (
     <main className="max-w-2xl mx-auto px-4 py-8">
       {/* Header */}
-      <header className="flex items-center justify-between mb-8">
-        <h1
-          className="
-            text-2xl font-bold tracking-tight
-            font-[family-name:var(--font-display)]
-          "
-        >
-          Monitors
-        </h1>
-        <ThemeToggle />
+      <header className="mb-8">
+        <div className="flex items-center justify-between">
+          <h1
+            className="
+              text-2xl font-bold tracking-tight
+              font-[family-name:var(--font-display)]
+            "
+          >
+            Monitors
+          </h1>
+          <ThemeToggle />
+        </div>
+        <p className="mt-1 text-sm text-[color:var(--color-text-secondary)] font-[family-name:var(--font-code)]">
+          Powered by{" "}
+          <a
+            href="https://exa.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[color:var(--color-link)] hover:underline"
+          >
+            Exa Monitors
+          </a>
+        </p>
       </header>
 
       {/* Feed */}
@@ -48,19 +61,7 @@ export default function Home() {
       </Suspense>
 
       {/* Footer */}
-      <footer className="mt-12 pt-6 border-t border-[color:var(--color-border)] text-center">
-        <p className="text-xs text-[color:var(--color-text-muted)] font-[family-name:var(--font-code)]">
-          Powered by{" "}
-          <a
-            href="https://exa.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[color:var(--color-link)] hover:underline"
-          >
-            Exa Monitors
-          </a>
-        </p>
-      </footer>
+      <footer className="mt-12 pt-6 border-t border-[color:var(--color-border)]" />
     </main>
   );
 }
